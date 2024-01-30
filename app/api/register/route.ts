@@ -1,3 +1,4 @@
+import { ssrFalse } from '@/utils/ssr-false';
 import axios, { AxiosError } from 'axios';
 import Cookies from 'js-cookie';
 
@@ -64,15 +65,31 @@ export const updateProfile = async (userData: {
 	}
 };
 
+interface AxiosErrorResponse {
+	message?: string;
+}
+
+interface ResetTokenResponse {
+	resetToken: string;
+}
+
 export const forgotPassword = async (userData: {
 	email: string;
-}): Promise<{ resetToken: string }> => {
-	try {
-		const response = await axios.post(`${API_URL1}`, userData);
-
-		// console.log('Registration successful', response.data);
-		return response.data;
-	} catch (error: any) {
-		throw new Error(error.response?.data?.message || 'Failed to register');
-	}
+}): Promise<ResetTokenResponse> => {
+	return new Promise((resolve, reject) => {
+		ssrFalse(() => {
+			axios
+				.post(`${API_URL1}`, userData)
+				.then((response) => {
+					resolve(response.data as ResetTokenResponse);
+				})
+				.catch((error: AxiosError<AxiosErrorResponse>) => {
+					if (error.response?.data?.message) {
+						reject(error.response.data.message);
+					} else {
+						reject('Failed to register');
+					}
+				});
+		});
+	});
 };
