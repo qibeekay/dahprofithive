@@ -37,12 +37,16 @@ export default function ForgotPassword() {
 		try {
 			setIsLoading(true);
 
-			const response = await forgotPassword(formData);
-			// Handle successful login
-			// Set the state to show the new form
-			setResetToken(response.resetToken);
-			setShowInitialForm(false);
-			setShowNewForms(true);
+			if (typeof document !== 'undefined') {
+				// This code will only run in the browser
+				const response = await forgotPassword(formData);
+
+				// Handle successful login
+				// Set the state to show the new form
+				setResetToken(response.resetToken);
+				setShowInitialForm(false);
+				setShowNewForms(true);
+			}
 		} catch (error: any) {
 			toast.error(error.message);
 		} finally {
