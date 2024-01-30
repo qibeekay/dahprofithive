@@ -30,6 +30,7 @@ import UserSidnnav from './admin/allusers/UserSidnnav';
 import Users from './admin/allusers/Users';
 import SinglePosts from './SinglePosts';
 import ProfilePage from './profile/ProfilePage';
+import ForgotPassword from './ForgotPassword';
 
 export {
 	RegisterForm,
@@ -64,4 +65,5 @@ export {
 	Users,
 	SinglePosts,
 	ProfilePage,
+	ForgotPassword,
 };
