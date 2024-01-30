@@ -4,7 +4,7 @@ import { InputProps } from '@/components';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function ForgotPassword() {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -76,6 +76,7 @@ export default function ForgotPassword() {
 				`https://backend.dahprofithive.com/api/v1/password/reset-password/${resetToken}`,
 				resetData
 			);
+			toast.success('Password reset successfull');
 			router.push('/login');
 		} catch (error: any) {
 			toast.error(error.message);
@@ -155,6 +156,7 @@ export default function ForgotPassword() {
 						</div>
 					</div>
 				</div>
+				<Toaster />
 			</div>
 		</main>
 	);
