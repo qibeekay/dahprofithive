@@ -120,6 +120,9 @@ const LoginForm = () => {
 								className='bg-primary-blue py-2 rounded-lg text-white'>
 								{isLoading ? 'Loading...' : 'Login'}
 							</button>
+							<Link className='text-[#7CD2D7]' href={'/forgot-password'}>
+								Forgot Password
+							</Link>
 						</form>
 
 						{/* login */}

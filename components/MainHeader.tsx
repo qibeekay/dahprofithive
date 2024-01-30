@@ -15,7 +15,8 @@ const MainHeader = () => {
 	const router = useRouter();
 	const [token, setToken] = useState<string | null>(null);
 	const [userInfo, setUserInfo] = useState<{
-		fullName: string;
+		firstName: string;
+		lastName: string;
 		email: string;
 	} | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -107,7 +108,7 @@ const MainHeader = () => {
 								{/* image */}
 								<div className='relative overflow-hidden w-[2rem] aspect-square rounded-full'>
 									<img
-										src='/profile.jpg'
+										src={localStorage.getItem('userImageUrl') || '/profile.jpg'}
 										className='w-full h-full block object-center'
 										alt='profile'
 									/>
@@ -121,7 +122,9 @@ const MainHeader = () => {
 									// Display user info if available
 									userInfo && (
 										<div className='hidden sm:block text-xs text-white'>
-											<p className='font-semibold'>{userInfo.fullName}</p>
+											<p className='font-semibold'>
+												{userInfo.firstName} {userInfo.lastName}
+											</p>
 											<p className='text-[.5rem] font-light'>
 												{userInfo.email}
 											</p>

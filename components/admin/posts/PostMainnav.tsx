@@ -185,7 +185,7 @@ const PostMainnav = () => {
 																</svg>
 															</Link>
 															{/* edit */}
-															<Link href='/admin/editPost'>
+															<Link href={`/admin/editPost?id=${post._id}`}>
 																<svg
 																	xmlns='http://www.w3.org/2000/svg'
 																	fill='none'

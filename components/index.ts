@@ -29,6 +29,7 @@ import UserMainnav from './admin/allusers/UserMainnav';
 import UserSidnnav from './admin/allusers/UserSidnnav';
 import Users from './admin/allusers/Users';
 import SinglePosts from './SinglePosts';
+import ProfilePage from './profile/ProfilePage';
 
 export {
 	RegisterForm,
@@ -62,4 +63,5 @@ export {
 	UserSidnnav,
 	Users,
 	SinglePosts,
+	ProfilePage,
 };

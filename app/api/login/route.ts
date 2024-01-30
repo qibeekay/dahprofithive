@@ -62,32 +62,35 @@ export const getAuthToken = () => {
 	return token;
 };
 
+// api/login/route.ts
+
 export const getUserName = async (): Promise<{
-	fullName: string;
+	firstName: string;
+	lastName: string;
 	email: string;
 } | null> => {
 	const userId = Cookies.get('userId');
-	console.log(userId);
 
 	if (!userId) {
 		return null; // Return null if user ID is not found in cookies
 	}
 
 	try {
-		// Replace 'USER_API_URL' with the actual URL of your "get user by ID" API
 		const apiUrl = `https://backend.dahprofithive.com/api/v1/users/${userId}`;
 		const response = await axios.get(apiUrl);
 
 		if (response.status === 200) {
 			const user = response.data;
 
-			const fullName = `${user.firstName} ${user.lastName}`;
-			const email = `${user.email}`;
-			// Return the user's name
-			return { fullName, email };
+			// Update the structure of the returned object
+			return {
+				firstName: user.firstName || '',
+				lastName: user.lastName || '',
+				email: user.email || '',
+			};
 		}
 	} catch (error) {
-		console.error('Error fetching user data:');
+		console.error('Error fetching user data:', error);
 	}
 
 	return null; // Return null if there was an error or the user was not found
