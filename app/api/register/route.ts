@@ -24,8 +24,12 @@ export const registerUser = async (userData: {
 	}
 };
 
-const token = typeof window !== 'undefined' ? Cookies.get('token') || '' : '';
+let token: string | undefined;
 
+if (typeof document !== 'undefined') {
+	// This code will only run in the browser
+	token = Cookies.get('token');
+}
 // update profile
 
 export const updateProfile = async (userData: {
