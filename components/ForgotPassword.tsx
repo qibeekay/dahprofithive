@@ -62,8 +62,8 @@ const ForgotPassword = () => {
 	const handleReset = async (e: FormEvent) => {
 		e.preventDefault();
 
-		for (const field in formData) {
-			if (formData[field as keyof typeof formData] === '') {
+		for (const field in resetData) {
+			if (resetData[field as keyof typeof resetData] === '') {
 				toast.error(`${field} cannot be empty`);
 				return;
 			}
