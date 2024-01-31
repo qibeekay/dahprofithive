@@ -106,7 +106,9 @@ const MainHeader = () => {
 						<div className='sm:bg-primary-blue flex items-center pl-3 pr-1 py-1.5 gap-10 rounded-lg'>
 							<Link href={''} className='flex items-center gap-2'>
 								{/* image */}
-								<div className='relative overflow-hidden w-[2rem] aspect-square rounded-full'>
+								<div
+									className='relative overflow-hidden w-[2rem] aspect-square rounded-full'
+									onClick={toggleDropdown}>
 									<img
 										src={localStorage.getItem('userImageUrl') || '/profile.jpg'}
 										className='w-full h-full block object-center'
@@ -141,7 +143,7 @@ const MainHeader = () => {
 						</div>
 						<div className='relative'>
 							{isDropdownOpen && (
-								<div className='absolute top-8 -left-[10.5rem] bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] rounded-md z-[999] py-2 w-[12rem]'>
+								<div className='absolute top-8 -left-[12rem] md:-left-[10.5rem] bg-white shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] rounded-md z-[999] py-2 w-[12rem]'>
 									<ul>
 										<li className='cursor-pointer px-4 pt-3 pb-1'>
 											<Link href={'/profile'}>Profile</Link>
